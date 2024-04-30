@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyle.css') }}">
+</head>
+<body>
+    <center>
+        <br>
+        <h1>TOPIK 단어장</h1>
+        <h3>TOPIK 単語帳</h3><br>
+            <h3>
+            <p>
+                <a lang="ja" href="{{ url_for('main.topik1') }}">TOPIK 1級</a><br><br>
+
+                <a lang="ja" href="{{ url_for('main.topik2') }}">TOPIK 2級</a><br><br>
+                
+                <a href="{{ url_for('main.mylist') }}">나의 단어장</a><br><br>
+                
+                <a href="{{ url_for('main.leveltest') }}">레벨 테스트(어휘)</a><br><br>
+
+                <a href="{{ url_for('main.writing') }}">레벨 테스트(문장)</a><br><br>
+                
+                <a href="{{ url_for('main.pronunciation') }}">발음 연습</a><br><br>
+            </p>
+        </h3>
+    </center>
+</body>
+</html>

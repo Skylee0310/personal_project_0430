@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<center>
+    <h1>TOPIK 1급 단어 목록</h1>
+    <h3 lang="ja">TOPIK 1級 単語目録</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>단어</th>
+                <th>품사</th>
+                <th>의미</th>
+                <th>길잡이말</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for word in word_list.items %}
+                <tr>
+                    <td>{{ word.id }}</td>
+                    <td>{{ word.voca }}</td>
+                    <td>{{ word.wordclass }}</td>
+                    <td lang="ja">{{ word.meaning.meaning }}</td>
+                    <td>{{ word.guidance }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if word_list.has_prev %}
+        <a href="{{ url_for('main.topik1', page=word_list.prev_num) }}">이전</a>
+    {% endif %}
+
+    {% for page_num in word_list.iter_pages() %}
+        {% if page_num %}
+            {% if word_list.page == page_num %}
+                <span class="current-page">{{ page_num }}</span>
+            {% else %}
+                <a href="{{ url_for('main.topik1', page=page_num) }}">{{ page_num }}</a>
+            {% endif %}
+        {% else %}
+            <span class="ellipsis">...</span>
+        {% endif %}
+    {% endfor %}
+
+    {% if word_list.has_next %}
+        <a href="{{ url_for('main.topik1', page=word_list.next_num) }}">다음</a>
+    {% endif %}
+{% endblock %}
+</center>

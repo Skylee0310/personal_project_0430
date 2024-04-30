@@ -1,0 +1,12 @@
+body{background-image: url('bg3.png');
+    background-size: cover;
+    background-repeat: no-repeat;}
+
+h1{margin-top: 80px;
+    color:rgb(247, 241, 119)}
+
+h3{color:white;}
+
+p{color:aliceblue}
+
+table{background-color: rgba(255, 255, 255, 0.5);}

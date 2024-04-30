@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<center>
+    <form action = '/leveltest_result' method="POST" enctype="multipart/form-data">
+    <h1>레벨 테스트 결과</h1>
+    <h3>レベルテスト結果</h3><br>
+    <p> 당신의 점수는 {{ score }}점입니다</p>
+    <p>あなたのスコアは{{ score }}点です。</p>
+    <br><br>
+    {% if score >= 8 %}
+        <p>축하합니다! 당신은 TOPIK 2급 이상의 어휘력을 가지고 있습니다.</p>
+        <p>おめでとうございます！あなたはTOPIK2級以上の語彙力を持っています。</p>
+        
+    {% elif score >= 6 %}
+        <p>당신은 TOPIK 2급 수준의 어휘력을 가지고 있습니다.</p>
+        <p>あなたはTOPIK2級レベルの語彙力を持っています。</p>
+
+    {% elif score >= 4 %}
+        <p>당신은 TOPIK 1급 수준의 어휘력을 가지고 있습니다.</p>
+        <p>あなたはTOPIK1級レベルの語彙力を持っています。</p>
+
+    {% else %}
+        <p>TOPIK 1급부터 힘내봅시다!</p>
+        <p>TOPIK１級から頑張ってみましょう！</p>
+    {% endif %}
+    
+    <a href="{{ url_for('main.index') }}"><br>홈으로 돌아가기</a>
+</form>
+</center>
+{% endblock %}

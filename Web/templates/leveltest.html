@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    .word-list {
+      display: flex;
+      justify-content: space-between;
+    }
+  
+    .word-list div {
+      width: 45%;
+    }
+  </style>
+
+<center>
+    <h1>레벨 테스트(어휘)</h1>
+    <h3>レベルテスト（語彙）</h3>
+    <form action="/leveltest" method="post">
+        {% for word in words %}
+        <p>{{ loop.index }}. {{ word.meaning.meaning }}</p>
+        <input type="text" name="answer_{{ loop.index0 }}" required>
+        <input type="hidden" name="word_id_{{ loop.index0 }}" value="{{ word.id }}">
+        {% endfor %}
+        <br>
+        <input type="submit" value="제출">
+    </form>
+</center>
+{% endblock %}
