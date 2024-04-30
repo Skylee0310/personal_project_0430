@@ -39,4 +39,8 @@
   - 일본어 의미 라벨링 (1300개)
 - 데이터베이스 구축
   - DBeaver 23.3.3에서 단어장으로 쓸 데이터베이스 korean_db 생성
-  - Word, Meaning 테이블 생성
+- 데이터베이스 연결 및 테이블 생성
+ - Word, Meaning 테이블 생성(클래스 사용)
+ - 테이블에 csv 파일을 입력하는 insert_word 함수 생성
+ - 중복 데이터 삭제를 위해 지정된 범위의 값을 삭제하는 delete_recodes_from_id 함수 생성
+- 웹 구현
