@@ -10,3 +10,15 @@ h3{color:white;}
 p{color:aliceblue}
 
 table{background-color: rgba(255, 255, 255, 0.5);}
+
+
+
+.custom-table {
+    width: 40%;
+    border-collapse: collapse; /* 테이블 셀 간의 경계를 병합하여 단일 경계를 생성합니다. */
+}
+
+.custom-table th, .custom-table td {
+    padding: 5px; /* 셀의 패딩을 12px로 설정합니다. */
+    text-align: center; /* 셀 내의 텍스트를 가운데 정렬합니다. */
+}

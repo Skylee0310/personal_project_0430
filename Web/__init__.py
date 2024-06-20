@@ -1,4 +1,3 @@
-# 모듈 로딩
 from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
@@ -27,7 +26,7 @@ def create_app():
     app.register_blueprint(main_views.bp)
 
     # insert_word 함수 호출
-    from .model import Word, Meaning, insert_word, delete_records_from_id
+    from .model import Word, Meaning, insert_word, delete_records_from_id, MyList
     
     with app.app_context():
         db.create_all()  # 모든 모델에 대한 테이블 생성
@@ -35,4 +34,3 @@ def create_app():
         #delete_records_from_id(1301) # 중복으로 들어간 데이터 삭제.
 
     return app
-

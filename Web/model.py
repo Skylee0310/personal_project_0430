@@ -56,3 +56,17 @@ def delete_records_from_id(start_id):
     db.session.commit()  # 변경 내용을 데이터베이스에 반영
 
     print(f'{len(words_to_delete)}개의 레코드를 성공적으로 삭제했습니다.')
+
+
+class MyList(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    my_word = db.Column(db.String(255), nullable=False)
+    my_meaning = db.Column(db.Text(), nullable=False)
+
+    def __init__(self, my_word, my_meaning):
+        self.my_word = my_word
+        self.my_meaning = my_meaning
+    
+    @staticmethod
+    def existing_word(my_word):
+        return MyList.query.filter_by(my_word=my_word).first() is not None

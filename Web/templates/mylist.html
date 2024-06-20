@@ -2,8 +2,48 @@
 
 {% block content %}
     <center>
-    <h1>나의 단어장</h1>
-    <h3>私の単語帳</h3>
+        <h1>나의 단어장</h1>
+        <h3>私の単語帳</h3>
+        <form method="post" action="{{ url_for('main.mylist') }}">
+            <label for="my_word"> 단어 ( 単語 ) :</label>
+            <input type="text" id="my_word" name="my_word" required>
+            <br>
+            <label for="my_meaning"> 의미（ 意味 ）:</label>
+            <input type="text" id="my_meaning" name="my_meaning" required>
+            <br>
+            <br>
+            <input type="submit" value="입력">
+        </form>
+        <br>
+        <h3>단어 목록</h3>
+        <table class="custom-table">
+            <tr>
+                <th>번호</th>
+                <th>단어</th>
+                <th>의미</th>
+                <th>삭제</th>
+            </tr>
+            {% for word in my_words %}
+            <tr>
+                <td>{{ word.id }}</td>
+                <td>{{ word.my_word }}</td>
+                <td>{{ word.my_meaning }}</td>
+                <td>
+                    <form method="post" action="{{ url_for('main.delete_word', index=word.id) }}">
+                        <input type="submit" value="삭제">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
 
-    {% endblock %}
-</center>
+        {% if my_words.has_prev %}
+        <a href="{{ url_for('main.mylist', page=my_words.prev_num) }}">이전</a>
+        {% endif %}
+        
+        {% if my_words.has_next %}
+        <a href="{{ url_for('main.mylist', page=my_words.next_num) }}">다음</a>
+        {% endif %}
+
+    </center>
+{% endblock %}
